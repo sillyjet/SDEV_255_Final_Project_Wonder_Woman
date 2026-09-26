@@ -5,8 +5,8 @@ from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import urlparse
 
-ROOT = Path(__file__).resolve().parent.parent
-DB = Path(__file__).resolve().parent / "courses.db"
+ROOT = Path(__file__).resolve().parent
+DB = ROOT / "courses.db"
 
 
 def connect():
