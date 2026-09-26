@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Add Course - Campus Course Hub</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="course-app.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>Campus Course Hub</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="courses.html">Courses</a>
+      <a href="add-course.html">Add Course</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Add a Course</h2>
+    <form id="add-course-form">
+      <label>Course name <input name="name" required></label>
+      <label>Description <textarea name="description" required></textarea></label>
+      <label>Subject <input name="subject" required></label>
+      <label>Credits <input name="credits" type="number" min="1" max="20" required></label>
+      <button type="submit">Add Course</button>
+    </form>
+    <p id="message" role="status"></p>
+  </main>
+</body>
+</html>
