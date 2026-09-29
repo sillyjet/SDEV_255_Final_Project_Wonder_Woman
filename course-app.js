@@ -1,5 +1,8 @@
+const API_BASE = window.location.hostname === "localhost"
+? " "
+: "https://sdev-255-final-project-wonder-woman.onrender.com";
 async function api(url, options) {
-  const response = await fetch(url, options);
+  const response = await fetch(`${API_BASE}${url}`, options);
   const data = await response.json();
 
   if (!response.ok) {
