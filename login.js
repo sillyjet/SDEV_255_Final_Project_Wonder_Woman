@@ -29,10 +29,11 @@ loginForm.addEventListener("submit", async (event) => {
             throw new Error(data.error || "Login failed.");
         }
 
-        // Save the logged-in user's information
+        
         localStorage.setItem("user", JSON.stringify(data.user));
+        localStorage.setItem("token", data.token);
 
-        // Go back to the home page
+        
         window.location.href = "index.html";
 
     } catch (error) {
