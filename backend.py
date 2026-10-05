@@ -1,4 +1,45 @@
+import getpass
+import hashlib
+import hmac
 import json
+import os
+import secrets
+import sqlite3
+import sys
+import time
+from contextlib import closing
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from pathlib import Path
+from urllib.parse import urlparse
+
+ROOT = Path(__file__).resolve().parent
+DB = Path(os.environ.get("DATABASE_PATH", str(ROOT / "courses.db")))
+DB.parent.mkdir(parents=True, exist_ok=True)
+
+
+def connect():
+    db = sqlite3.connect(DB)
+    db.row_factory = sqlite3.Row
+    db.execute("PRAGMA foreign_keys = ON")
+    return db
+
+
+def password_hash(password, salt):
+    return hashlib.pbkdf2_hmac(
+        "sha256",
+        password.encode(),
+        bytes.fromhex(salt),
+        600000
+    ).hex()
+
+
+def create_user(username, password, role):
+    username = username.strip()
+
+    if (
+        not username
+        or role not in ("teacher", "student")
+        or not 12 <= len(password) import json
 import sqlite3
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
@@ -155,3 +196,4 @@ import os
 port = int(os.environ.get("PORT", 8000))
 print(f"Open http://localhost:{port}")
 ThreadingHTTPServer(("0.0.0.0", port), Handler).serve_forever()
+

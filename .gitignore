@@ -23,3 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 courses.db
+courses.db-journal
+courses.db-wal
+courses.db-shm
+__pycache__/
+.env
