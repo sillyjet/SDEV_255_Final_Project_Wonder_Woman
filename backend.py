@@ -84,6 +84,42 @@ def initialize():
                 expires_at INTEGER NOT NULL
             );
         """)
+    starter_courses = [
+        (
+            "BIO 101 – Introduction to Biology",
+            "Introduction to the basic principles of biology, including "
+            "cells, genetics, evolution, and ecosystems.",
+            "Science",
+            3
+        ),
+        (
+            "ENG 111 – English Composition",
+            "Development of college-level writing, research, critical "
+            "thinking, and communication skills.",
+            "English",
+            3
+        ),
+        (
+            "MAT 136 – College Algebra",
+            "Study of algebraic concepts including equations, functions, "
+            "graphs, and problem-solving.",
+            "Mathematics",
+            3
+        )
+    ]
+
+    with closing(connect()) as db, db:
+        for course in starter_courses:
+            db.execute(
+                """
+                INSERT INTO courses (name, description, subject, credits)
+                SELECT ?, ?, ?, ?
+                WHERE NOT EXISTS (
+                    SELECT 1 FROM courses WHERE name = ?
+                )
+                """,
+                (*course, course[0])
+            )
 
     # Create initial accounts from environment variables, if provided.
     for role in ("teacher", "student"):
