@@ -1,0 +1,64 @@
+body {
+    background-color: #C8D7FF;
+    color: #32327C;
+    font-family: "Courier New";
+}
+
+h1 {
+    text-align: center;
+    font-size: 70px;
+    background-color: #8AA9FF;
+    margin: auto;
+    padding: 20px;
+}
+
+nav {
+    background-color: #8AA9FF;
+    padding: 20px;
+    text-align: center;
+    font-size: 30px;
+}
+
+nav a {
+    padding: 25px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 30px;
+}
+
+form {
+    text-align: center;
+}
+
+li {
+    padding: 10px;
+    font-weight: bold;
+}
+
+.courses {
+    display: flex;
+    justify-content: center;
+}
+
+.course-list {
+    display: flex;
+}
+
+.course-card {
+    background-color: white;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 5px;
+    text-align: left;
+}
+
+main {
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+}
